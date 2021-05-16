@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-css": "npx tailwindcss-cli@latest build .\\css\\style.css -o .\\css\\tailwind.css"
+    "build-css": "npx tailwindcss-cli@latest build .\\css\\style.css -o .\\css\\tailwind.css",
+    "produce-css": "set NODE_ENV=production&&npx tailwindcss-cli@latest build .\\css\\style.css -o .\\css\\tailwind.css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "tailwindcss": "^2.1.2"
+  },
+  "devDependencies": {
+    "purgecss": "^4.0.3"
   }
 }

@@ -10,7 +10,7 @@
     <title>Md. Atik Shahriar CV</title>
 </head>
 <body class="font-lato text-justify">
-    <div class="m-4 border bg-gray-100 border-black overflow-hidden custom-shadow mn:m-6 sm:rounded-3xl md:my-8 md:mx-16 lg:mx-24">
+    <div class="m-4 border bg-gray-100 border-black overflow-hidden custom-shadow mn:m-6 sm:rounded-3xl md:my-8 md:mx-16 lg:mx-32">
         <div class="flex flex-col p-5 text-center bg-primary-400 border-b border-black text-gray-200 md:flex-row md:justify-center">
             <div class="flex flex-row justify-center">
                 <img class="h-auto w-full max-w-lt min-w-1/2 my-auto object-cover transform transition-transform duration-500  rounded-full border-white border-2 justify-center mn:min-w-1/4 md:max-w-3lt lg:max-w-4lt hover:shadow-xl hover:scale-105" src="../assets/my_photo.jpg" alt="Photo of Md Atik">
@@ -23,15 +23,17 @@
                     <div class="flex flex-row text-left mn:justify-center py-4 md:justify-start md:px-4">
                         <b>Address</b>
                         <div class="w-0.5 h-auto mx-2 bg-white"></div>
-                        <a class="flex flex-col justify-center hover:text-red-500" href="https://www.google.com/maps/place/24%C2%B054'43.0%22N+91%C2%B049'52.5%22E/@24.9119512,91.8306908,19z/data=!3m1!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d24.9119495!4d91.8312382" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                              </svg>
-                        </a>
-                        <div class="flex flex-col">
-                            <p>Shah Sikandar RA, SUST Gate</p>
-                            <p>Akhalia, Sylhet 3114</p>
+                        <div class="flex">
+                            <a class="flex flex-col justify-center hover:text-red-500" title="See location" href="https://www.google.com/maps/place/24%C2%B054'43.0%22N+91%C2%B049'52.5%22E/@24.9119512,91.8306908,19z/data=!3m1!4b1!4m6!3m5!1s0x0:0x0!7e2!8m2!3d24.9119495!4d91.8312382" target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                  </svg>
+                            </a>
+                            <div class="flex flex-col cursor-pointer" id="show-weather" title="Show Weather">
+                                <p>Shah Sikandar RA, SUST Gate</p>
+                                <p>Akhalia, Sylhet 3114</p>
+                            </div>
                         </div>
                     </div>
                     <div class="flex flex-row text-left mn:justify-center py-4 md:justify-start md:px-5">
@@ -55,12 +57,45 @@
                 </div>
             </div>
         </div>
+        <div class="flex justify-center z-10" id="weather">
+            <div class="grid grid-cols-2 grid-rows-4 relative w-auto h-auto my-2 mx-6 p-2 bg-gray-300 text-black rounded-xl shadow-2xl">
+                <div class="absolute right-0 top-0 px-2 pt-1 cursor-pointer" id="hide-weather">x</div>
+                <div class="flex flex-row col-span-2 justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-6" viewBox="0 0 512 512"><title>Cloudy Night</title><path d="M388.31 272c47.75 0 89.77-27.77 107.69-68.92-14.21 6.18-30.9 8.61-47.38 8.61A116.31 116.31 0 01332.31 95.38c0-16.48 2.43-33.17 8.61-47.38C299.77 65.92 272 107.94 272 155.69a116.31 116.31 0 003.44 28.18" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M90.61 306.85A16.07 16.07 0 00104 293.6C116.09 220.17 169.63 176 232 176c57.93 0 96.62 37.75 112.2 77.74a15.84 15.84 0 0012.2 9.87c50 8.15 91.6 41.54 91.6 99.59 0 59.4-48.6 100.8-108 100.8H106c-49.5 0-90-24.7-90-79.2 0-48.47 38.67-72.22 74.61-77.95z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/></svg>
+                    <p id="location-temp"></p>
+                </div>
+                <div class="flex col-span-2 justify-center">
+                    <p>Condition</p>
+                    <p id="condition"></p>
+                </div>
+                <div class="flex px-2">
+                    <p>Feels Like</p>
+                    <p id="feels-like"></p>
+                </div>
+                <div class="flex px-2">
+                    <p>Pressure</p>
+                    <p id="pressure"></p>
+                </div>
+                <div class="flex px-2">
+                    <p>Humidity</p>
+                    <p id="humidity"></p>
+                </div>
+                <div class="flex px-2">
+                    <p>Wind Speed</p>
+                    <p id="wind-speed"></p>
+                </div>
+            </div>
+        </div>
         <section class="flex flex-col md:grid md:grid-flow-col md:grid-cols-5 md:grid-rows-7 lg:grid-cols-3">
             <div class="flex flex-col justify-center transform transition-transform duration-500 p-4 bg-primary-100 rounded-lg m-6 shadow-sm hover:shadow-xl hover:scale-105 md:col-span-3 md:order-4 lg:col-span-2">
-                <div>
-                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Experience</h3>
+                <div class="flex flex-row justify-between cursor-pointer" id="expandable-experience">
+                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Experience</h2>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" id="down" viewBox="0 0 512 512"><title>Show Experiences</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" id="up" viewBox="0 0 512 512"><title>Hide Experiences</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                    </div>
                 </div>
-                <div class="flex flex-row">
+                <div class="flex flex-row" id="hideable-experience">
                     <div class="flex flex-col">
                         <p class="font-lato font-normal text-sm mt-1 ml-1 text-secondary-100 md:mr-2">2021 - Present</p>
                     </div>
@@ -72,10 +107,14 @@
                 </div>
             </div>
             <div class="flex flex-col justify-center transform transition-transform duration-500 p-4 bg-primary-100 rounded-lg m-6 shadow-sm hover:shadow-xl hover:scale-105 md:col-span-2 md:row-span-3 md:order-2 md:bg-primary-200 md:mr-0 lg:col-span-1">
-                <div>
-                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl md:text-gray-200">Skills</h3>
+                <div class="flex flex-row justify-between cursor-pointer" id="expandable-skills">
+                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl md:text-gray-200">Skills</h2>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" id="down" viewBox="0 0 512 512"><title>Show Skills</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" id="up" viewBox="0 0 512 512"><title>Hide Skills</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                    </div>
                 </div>
-                <div>
+                <div id="hideable-skills">
                     <div>
                         <h3 class="text-xl my-1 text-primary-400 mn:text-2xl md:text-3xl">Programming Languages</h3>
                     </div>
@@ -93,8 +132,6 @@
                             <li><p class="mr-8 breakable">Go</p></li>
                         </ul>
                     </div>
-                </div>
-                <div>
                     <div>
                         <h3 class="text-xl my-1 text-primary-400 mn:text-2xl md:text-3xl">Tools and Frameworks</h3>
                     </div>
@@ -120,103 +157,151 @@
                 </div>
             </div>
             <div class="flex flex-col justify-center transform transition-transform duration-500 p-4 bg-primary-100 rounded-lg m-6 shadow-sm hover:shadow-xl hover:scale-105 md:col-span-3 md:row-span-3 md:order-5 lg:col-span-2">
-                <div>
-                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Projects</h3>
-                </div>
-                <div class="py-2 border-b-2 border-black border-dashed">
-                    <div class="flex flex-row">
-                        <p class="font-itim text-xl uppercase my-1 md:text-black">KIN Blood</p>
-                        <a href="https://play.google.com/store/apps/details?id=com.sust.kinblood" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                            </svg>
-                        </a>
+                <div class="flex flex-row justify-between cursor-pointer" id="expandable-projects">
+                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Projects</h2>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" id="down" viewBox="0 0 512 512"><title>Show Projects</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" id="up" viewBox="0 0 512 512"><title>Hide Projects</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
                     </div>
-                    <ul class="list-disc overflow-hidden">
-                        <li class="float-left mr-2 ml-6"><p class="font-normal text-sm m-0">Android</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="font-normal text-sm m-0">Google Map API</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="font-normal text-sm m-0">Firebase</p></li>
-                    </ul>
-                    <p class="text-base text-secondary-100 my-1">Created a platform for everyone where people can search for blood donors from nearby locations and contact them. The app is available in Google Play Store.</p>
                 </div>
-                <div class="py-2 border-b-2 border-black border-dashed">
-                    <div class="flex flex-row">
-                        <p class="font-itim text-xl uppercase my-1 md:text-black">GetPureCure</p>
-                        <a href="https://fhb369.github.io/getpurecure/" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                            </svg>
-                        </a>
+                <div id="hideable-projects">
+                    <div class="p-2 rounded-lg border border-gray-500 hover:shadow-xl">
+                        <div class="flex flex-row justify-between cursor-pointer" id="expandable-project1">
+                            <div class="flex flex-row">
+                                <p class="font-itim text-xl uppercase my-1 md:text-black">KIN Blood</p>
+                                <a href="https://play.google.com/store/apps/details?id=com.sust.kinblood" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" id="down" viewBox="0 0 512 512"><title>Show</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" id="up" viewBox="0 0 512 512"><title>Hide</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                            </div>
+                        </div>
+                        <div id="hideable-project1">
+                            <ul class="list-disc overflow-hidden">
+                                <li class="float-left mr-2 ml-6"><p class="font-normal text-sm m-0">Android</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="font-normal text-sm m-0">Google Map API</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="font-normal text-sm m-0">Firebase</p></li>
+                            </ul>
+                            <p class="text-base text-secondary-100 my-1">Created a platform for everyone where people can search for blood donors from nearby locations and contact them. The app is available in Google Play Store.</p>
+                        </div>
                     </div>
-                    <ul class="list-disc overflow-hidden">
-                        <li class="float-left mr-2 ml-6"><p class="st5">React</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="st5">Node.js</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="st5">Android</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="st5">MongoDB</p></li>
-                    </ul>
-                    <p class="text-base text-secondary-100 my-1">Created a full-fledged e-commerce website along with its Android counter-part that can sell medical products and connect patients, doctors and medical students for better communication.</p>
-                </div>
-                <div class="py-2 border-b-2 border-black border-dashed">
-                    <div class="flex flex-row">
-                        <p class="font-itim text-xl uppercase my-1 md:text-black">GoodsLedger</p>
-                        <a href="https://github.com/mdatikshahriar/GoodsLedger-App" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                            </svg>
-                        </a>
-                        <a href="https://github.com/mdatikshahriar/GoodsLedger-Server" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                            </svg>
-                        </a>
+                    <div class="p-2 rounded-lg border border-gray-500 hover:shadow-xl">
+                        <div class="flex flex-row justify-between cursor-pointer" id="expandable-project2">
+                            <div class="flex flex-row">
+                                <p class="font-itim text-xl uppercase my-1 md:text-black">GetPureCure</p>
+                                <a href="https://fhb369.github.io/getpurecure/" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" id="down" viewBox="0 0 512 512"><title>Show</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" id="up" viewBox="0 0 512 512"><title>Hide</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                            </div>
+                        </div>
+                        <div id="hideable-project2">
+                            <ul class="list-disc overflow-hidden">
+                                <li class="float-left mr-2 ml-6"><p class="st5">React</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="st5">Node.js</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="st5">Android</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="st5">MongoDB</p></li>
+                            </ul>
+                            <p class="text-base text-secondary-100 my-1">Created a full-fledged e-commerce website along with its Android counter-part that can sell medical products and connect patients, doctors and medical students for better communication.</p>
+                        </div>
                     </div>
-                    <ul class="list-disc overflow-hidden">
-                        <li class="float-left mr-2 ml-6"><p class="">Hyperledger Fabric</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="">Android</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="">Node.js</p></li>
-                    </ul>
-                    <p class="text-base text-secondary-100 my-1">Created an android app with a server based on Hyperledger Fabric to detect counterfeit product using private blockchain.</p>
-                </div>
-                <div class="py-2 border-b-2 border-black border-dashed">
-                    <div class="flex flex-row">
-                        <p class="font-itim text-xl uppercase my-1 md:text-black">Routine Management System</p>
-                        <a href="https://github.com/FHB369/Routine-Management-System" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                            </svg>
-                        </a>
+                    <div class="p-2 rounded-lg border border-gray-500 hover:shadow-xl">
+                        <div class="flex flex-row justify-between cursor-pointer" id="expandable-project3">
+                            <div class="flex flex-row">
+                                <p class="font-itim text-xl uppercase my-1 md:text-black">GoodsLedger</p>
+                                <a href="https://github.com/mdatikshahriar/GoodsLedger-App" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                    </svg>
+                                </a>
+                                <a href="https://github.com/mdatikshahriar/GoodsLedger-Server" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" id="down" viewBox="0 0 512 512"><title>Show</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" id="up" viewBox="0 0 512 512"><title>Hide</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                            </div>
+                        </div>
+                        <div id="hideable-project3">
+                            <ul class="list-disc overflow-hidden">
+                                <li class="float-left mr-2 ml-6"><p class="">Hyperledger Fabric</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="">Android</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="">Node.js</p></li>
+                            </ul>
+                            <p class="text-base text-secondary-100 my-1">Created an android app with a server based on Hyperledger Fabric to detect counterfeit product using private blockchain.</p>
+                        </div>
                     </div>
-                    <ul class="list-disc overflow-hidden">
-                        <li class="float-left mr-2 ml-6"><p class="">React</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="">Laravel</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="">MySQL</p></li>
-                    </ul>
-                    <p class="text-base text-secondary-100 my-1">Created a web application for managing class routines.</p>
-                </div>
-                <div class="py-2">
-                    <div class="flex flex-row">
-                        <p class="font-itim text-xl uppercase my-1 md:text-black">P2p Chat</p>
-                        <a href="https://github.com/mdatikshahriar/P2P_Chat" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                            </svg>
-                        </a>
+                    <div class="p-2 rounded-lg border border-gray-500 hover:shadow-xl">
+                        <div class="flex flex-row justify-between cursor-pointer" id="expandable-project4">
+                            <div class="flex flex-row">
+                                <p class="font-itim text-xl uppercase my-1 md:text-black">Routine Management System</p>
+                                <a href="https://github.com/FHB369/Routine-Management-System" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" id="down" viewBox="0 0 512 512"><title>Show</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" id="up" viewBox="0 0 512 512"><title>Hide</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                            </div>
+                        </div>
+                        <div id="hideable-project4">
+                            <ul class="list-disc overflow-hidden">
+                                <li class="float-left mr-2 ml-6"><p class="">React</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="">Laravel</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="">MySQL</p></li>
+                            </ul>
+                            <p class="text-base text-secondary-100 my-1">Created a web application for managing class routines.</p>
+                        </div>
                     </div>
-                    <ul class="list-disc overflow-hidden">
-                        <li class="float-left mr-2 ml-6"><p class="">Android</p></li>
-                        <li class="float-left mr-2 ml-6"><p class="">Socket.IO</p></li>
-                    </ul>
-                    <p class="text-base text-secondary-100 my-1">Created a messaging app based on P2P network.</p>
+                    <div class="p-2 rounded-lg border border-gray-500 hover:shadow-xl">
+                        <div class="flex flex-row justify-between cursor-pointer" id="expandable-project5">
+                            <div class="flex flex-row">
+                                <p class="font-itim text-xl uppercase my-1 md:text-black">P2p Chat</p>
+                                <a href="https://github.com/mdatikshahriar/P2P_Chat" target="_blank">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-2 mx-1 text-secondary-100 hover:text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                                    </svg>
+                                </a>
+                            </div>
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" id="down" viewBox="0 0 512 512"><title>Show</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" id="up" viewBox="0 0 512 512"><title>Hide</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                            </div>
+                        </div>
+                        <div id="hideable-project5">
+                            <ul class="list-disc overflow-hidden">
+                                <li class="float-left mr-2 ml-6"><p class="">Android</p></li>
+                                <li class="float-left mr-2 ml-6"><p class="">Socket.IO</p></li>
+                            </ul>
+                            <p class="text-base text-secondary-100 my-1">Created a messaging app based on P2P network.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="flex flex-col justify-center transform transition-transform duration-500 p-4 bg-primary-100 rounded-lg m-6 shadow-sm hover:shadow-xl hover:scale-105 md:col-span-3 md:order-6 lg:col-span-2">
-                <div>
-                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Problem Solving</h3>
+                <div class="flex flex-row justify-between cursor-pointer" id="expandable-problem">
+                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Problem Solving</h2>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" id="down" viewBox="0 0 512 512"><title>Show Problem Solving</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" id="up" viewBox="0 0 512 512"><title>Hide Problem Solving</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                    </div>
                 </div>
-                <div>
+                <div id="hideable-problem">
                     <p class="text-base text-secondary-100 my-1">Solved around <b>500+</b> problems in various online judge including <b>Codeforces, HackerRank, LightOJ, VJudge, Rosalind,</b> and <b>UVA</b></p>
-                </div>
-                <div>
                     <ul class="list-none my-2 mr-8">
                         <li><p class="font-nova font-light text-base my-1">Codeforces ID: <a class="hover:text-gray-500 hover:underline" href="https://codeforces.com/profile/mdatikshahriar" target="_blank">mdatikshahriar</a></p></li>
                         <li><p class="font-nova font-light text-base my-1">HackerRank ID: <a class="hover:text-gray-500 hover:underline" href="https://www.hackerrank.com/mdatikshahriar" target="_blank">mdatikshahriar</a></p></li>
@@ -224,10 +309,14 @@
                 </div>
             </div>
             <div class="flex flex-col justify-center transform transition-transform duration-500 p-4 bg-primary-100 rounded-lg m-6 shadow-sm hover:shadow-xl hover:scale-105 md:col-span-2 md:row-span-3 md:order-1 md:bg-primary-200 md:mr-0 lg:col-span-1">
-                <div>
-                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl md:text-gray-200">Education</h3>
+                <div class="flex flex-row justify-between cursor-pointer" id="expandable-education">
+                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl md:text-gray-200">Education</h2>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" id="down" viewBox="0 0 512 512"><title>Show Education</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" id="up" viewBox="0 0 512 512"><title>Hide Education</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                    </div>
                 </div>
-                <ul class="list-timeline">
+                <ul class="list-timeline" id="hideable-education">
                     <li>
                         <p class="font-dance font-semibold text-base my-1 text-primary-400">2017-2021</p>
                         <p class="font-itim text-xl uppercase my-1 md:text-gray-200">Shahjalal University of Science and Technology</p>
@@ -250,22 +339,34 @@
                 </ul>
             </div>
             <div class="flex flex-col transform transition-transform duration-500 p-4 bg-primary-100 rounded-lg m-6 shadow-sm hover:shadow-xl hover:scale-105 md:col-span-3 md:order-7 lg:col-span-2">
-                <div>
-                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Undergraduate Thesis</h3>
+                <div class="flex flex-row justify-between cursor-pointer" id="expandable-thesis">
+                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Undergraduate Thesis</h2>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" id="down" viewBox="0 0 512 512"><title>Show Thesis</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" id="up" viewBox="0 0 512 512"><title>Hide Thesis</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                    </div>
                 </div>
-                <div>
+                <div id="hideable-thesis">
                     <p class="font-itim text-xl uppercase my-1 md:text-black">Modelling and Simulating Attacks in A Private Blockchain System</p>
                     <p class="text-base text-secondary-100 my-1">Worked with <a class="breakable hover:text-gray-500 hover:underline" href="https://scholar.google.com/citations?user=kA2cOt0AAAAJ&hl=en" target="_blank"><b>Faisal Haque Bappy</b></a>, under the supervision of <a class="breakable hover:text-gray-500 hover:underline" href="https://scholar.google.com/citations?user=DnQAee0AAAAJ&hl=en" target="_blank"><b>Md Sadek Ferdous</b></a>, to model and simulate various types of attacks in private Blockchain systems such as <a class="breakable hover:text-gray-500 hover:underline" href="https://www.hyperledger.org/use/fabric" target="_blank"><b>Hyperledger Fabric</b></a>.</p>
                 </div>
             </div>
             <div class="flex flex-col transform transition-transform duration-500 p-4 bg-primary-100 rounded-lg m-6 shadow-sm hover:shadow-xl hover:scale-105 md:col-span-3 md:order-8 md:border-none lg:col-span-2">
-                <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Publications</h3>
-                <ol class="list-decimal pl-6">
+                <div class="flex flex-row justify-between cursor-pointer" id="expandable-publications">
+                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:text-4xl">Publications</h2>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" id="down" viewBox="0 0 512 512"><title>Show Publications</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 184l144 144 144-144"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" id="up" viewBox="0 0 512 512"><title>Hide Publications</title><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" d="M112 328l144-144 144 144"/></svg>
+                    </div>
+                </div>
+                <ol class="list-decimal pl-6" id="hideable-publications">
                     <li><p class="font-light text-base my-1"></p>M. A. Shahriar, F. H. Bappy, A. K. M. Fakhrul Hossain, D. D. Saikat, M. S. Ferdous, M. J. M. Chowdhury, and M. Z. A. Bhuiyan. Modelling attacks in blockchain systems using petri nets. In <i>"2020 IEEE 19th International Conference on Trust, Security and Privacy in Computing and Communications (TrustCom)"</i>, pages 1069–1078, 2020. <a href="https://ieeexplore.ieee.org/document/9343010" target="_blank"><p class="breakable">https://ieeexplore.ieee.org/document/9343010</p></a></p></li>
                 </ol>
             </div>
             <div class="flex flex-col transform transition-transform duration-500 p-4 bg-primary-100 rounded-lg m-6 shadow-sm hover:shadow-xl hover:scale-105 md:col-span-2 md:order-3 md:bg-primary-200 md:mr-0 lg:col-span-1">
-                <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:hidden">Links</h3>
+                <div>
+                    <h2 class="text-2xl my-1 text-secondary-200 mn:text-3xl md:hidden">Links</h2>
+                </div>
                 <ul class="list-none flex flex-col flex-grow justify-center p-0 my-2">
                     <li>
                         <div class="flex flex-row justify-center">
@@ -285,10 +386,7 @@
         <p class="text-xs text-center">Last updated on: 17 May 2021</p>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            
-        });
-    </script>
+    <script src="./javaScript/app.js"></script>
+    <script src="./javaScript/weather.js"></script>
 </body>
 </html>

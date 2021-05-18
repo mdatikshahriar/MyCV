@@ -5,7 +5,7 @@ $(document).ready(() => {
     $.get(api)
     .then((response) => {
         let { name, sys: { country }, weather: [ { main: main_condition, description } ],
-        main: { temp, feels_like, pressure, humidity }, wind: { speed: wind_speed} } = response;
+            main: { temp, feels_like, pressure, humidity }, wind: { speed: wind_speed} } = response;
 
         const location_temp = `${name}, ${country} ~ (${(temp - 273.15).toFixed(2)}\u00B0C)`;
         const condition = `: ${main_condition}, ${description}`;

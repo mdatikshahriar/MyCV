@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
-    const api = 'https://api.openweathermap.org/data/2.5/weather?lat=23.788659&lon=90.411470&appid=115d54f3a041ee26a278721da1902672';
-    
+    const api = 'https://api.openweathermap.org/data/2.5/weather?lat=24.9119&lon=91.8313&appid=115d54f3a041ee26a278721da1902672';
+
     $.get(api)
     .then((response) => {
         let { name, sys: { country }, weather: [ { main: main_condition, description } ],
